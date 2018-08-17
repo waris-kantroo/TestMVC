@@ -1,0 +1,40 @@
+﻿@model TestMVC.Models.Employee
+<table border="1" id="table">
+    <thead>
+        <tr>
+            <td> Id </td>
+            <td> Full Name </td>
+            <td> DOB </td>
+            <td> Address </td>
+            <td> Action </td>
+        </tr>
+    </thead>
+
+    <tbody>
+     
+       
+            <tr>
+                <td>@Model.Id  </td>
+                <td>@Model.FullName  </td>
+                <td>@Model.DOB.ToString("MM/dd/yyyy") </td>
+                <td>@Model.address.city <br>@Model.address.telephone <br /> @Model.address.pincode @Model.address.subAddress.telephone <br /> @Model.address.subAddress.pincode <br /> @Model.address.subAddress.city </td>
+                <td>
+                   
+
+                    <button type="submit" name="save" data-id="@Model.Id" id="save" value="@Model.Id"> Save</button>
+
+                </td>
+            </tr>
+
+      
+    </tbody>
+</table>
+@*<button name="close"> Close</button>
+<script>
+    $(document).ready(function () {
+        $('#updatePartialView').click(function () {
+            $('#updatePartialView').dialog('close');
+            
+        });
+    });
+</script>*@

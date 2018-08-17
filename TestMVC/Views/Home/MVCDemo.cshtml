@@ -1,0 +1,122 @@
+﻿@model IList<TestMVC.Models.Employee>
+@{
+    ViewBag.Title = "MVCDemo";
+}
+
+
+
+
+<head>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+
+    <!-- below two for jquery datatable-->
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+
+
+
+    @*  ****** IMPORTANT CHECK BundleConfig.cs added Jquery UI there ************@
+
+</head>
+<div id="updatePartialView">
+
+</div>
+
+<h2>This is my MVC Demo class Showing data in grid with pagination,searching but sorting diabled for last column</h2>
+@if (Model != null)
+{
+    <table border="1" id="table">
+        <thead>
+            <tr>
+                <td> Id </td>
+                <td> Full Name </td>
+                <td> DOB </td>
+                <td> Address </td>
+                <td> Action </td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id  </td>
+                    <td>@item.FullName  </td>
+                    <td>@item.DOB.ToString("MM/dd/yyyy") </td>
+                    <td>@item.address.city <br>@item.address.telephone <br /> @item.address.pincode @item.address.subAddress.telephone <br /> @item.address.subAddress.pincode <br /> @item.address.subAddress.city </td>
+                    <td>
+                        <button type="button" class="edit" value="@item.Id" id="@item.Id"> Edit </button>
+                        <button type="button" class="add" value="@item.Id"> Add </button>
+
+                        <button type="button" name="Command" data-id="@item.Id" id="editConfig" value="@item.Id"> Please Try me</button>
+
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+}
+
+<script>
+
+    $(document).ready(function ()   {
+        $(".edit").on("click", function () {
+            var name = $(this).attr('value');    // we can also use working fine... "$(this).val()"
+            alert(name + "edit clicked");
+            $.ajax({
+                url: "/Home/EditMe/",
+                type: "POST",
+                datatype: "text",
+                data: { userId : name },
+                //contentType: false,
+                //processData: false,
+                success: function (data) {
+                    debugger
+                    //alert("empty");
+                    $('#updatePartialView').html(data);
+                    $('#updatePartialView').dialog();
+                },
+                error: function () {    
+                    alert('Something went Wrong !!!. Please try again');
+                }
+
+            });
+        });
+
+        $(".add").on("click", function () {
+            var name = $(this).attr('value');
+            alert(name + "add clicked");
+        });
+
+
+
+
+        //$(document).on('click', '#editConfig', function (e) {
+        // very important
+        $(document).on("click", "#editConfig", function () {
+            var id = $(this).data('id');
+            alert(id);
+        });
+
+        // for from datatable // sorting disable for last column
+        $('#table').DataTable({
+
+            "columnDefs": [{
+                "targets": 4,
+                "orderable": false
+            }]
+
+        });
+
+        // data table till here
+
+
+
+    });
+</script>
+
