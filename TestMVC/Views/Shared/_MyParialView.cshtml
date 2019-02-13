@@ -10,17 +10,13 @@
         </tr>
     </thead>
 
-    <tbody>
-     
-       
+    <tbody> 
             <tr>
                 <td>@Model.Id  </td>
                 <td>@Model.FullName  </td>
                 <td>@Model.DOB.ToString("MM/dd/yyyy") </td>
                 <td>@Model.address.city <br>@Model.address.telephone <br /> @Model.address.pincode @Model.address.subAddress.telephone <br /> @Model.address.subAddress.pincode <br /> @Model.address.subAddress.city </td>
                 <td>
-                   
-
                     <button type="submit" name="save" data-id="@Model.Id" id="save" value="@Model.Id"> Save</button>
 
                 </td>

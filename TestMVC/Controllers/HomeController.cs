@@ -3,13 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TestMVC.Repository;
 
 namespace TestMVC.Controllers
 {
     public class HomeController : Controller
     {
+       private readonly IProductRepository repository;
+
+        public HomeController(IProductRepository repository)
+        {
+            this.repository = repository;
+        }
+
         public ActionResult Index()
         {
+            var data = repository.GetAll();  /// using dependency here
             return View();
         }
 

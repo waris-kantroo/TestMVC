@@ -1,0 +1,7 @@
+﻿@model IList<TestMVC.Repository.Product>
+Dependency injected sucessfully <br />
+@foreach (var item in Model)
+{
+    @Html.TextBoxFor(model => item.Price, new { id = "Price2", Name = "Price2" }) <br />
+    <input type="text" id="Price1">
+}

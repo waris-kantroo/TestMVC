@@ -8,12 +8,12 @@ namespace TestMVC
 {
     public class EmployeeData
     {
-        public List<Employee> GetEmployees() => new List<Employee>()
+        public List<Customer> GetEmployees() => new List<Customer>()
             {
-             new Employee {Id=1,FullName="waris kantroo",DOB = DateTime.Parse("08/03/1988"),address = InitializeAddress()},
-             new Employee {Id=2,FullName="Roger Federer",DOB = DateTime.Parse("08/03/1978"),address = InitializeSecondAddress()},
-             new Employee {Id=3,FullName="Rafa Nadal",DOB = DateTime.Parse("08/03/1983"),address = InitializeThirdAddress()},
-             new Employee {Id=4,FullName="Novak Djokovic",DOB = DateTime.Parse("08/03/1985"),address = InitializeFourthAddress()}
+             new Customer {Id=1,FullName="waris kantroo",DOB = DateTime.Parse("08/03/1988"),address = InitializeAddress()},
+             new Customer {Id=2,FullName="Roger Federer",DOB = DateTime.Parse("08/03/1978"),address = InitializeSecondAddress()},
+             new Customer {Id=3,FullName="Rafa Nadal",DOB = DateTime.Parse("08/03/1983"),address = InitializeThirdAddress()},
+             new Customer {Id=4,FullName="Novak Djokovic",DOB = DateTime.Parse("08/03/1985"),address = InitializeFourthAddress()}
             };
 
         private static Address InitializeAddress()

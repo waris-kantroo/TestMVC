@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TestMVC.Models
 {
-    public class Employee
+    public class Customer
     {
         public int Id { get; set; }
         public  string FullName { get; set; }
