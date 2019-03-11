@@ -18,8 +18,25 @@ namespace TestMVC.Controllers
 
         public ActionResult Index()
         {
+            // get factorial
+           int factValue = GetFactorial(6);
+
             var data = repository.GetAll();  /// using dependency here
             return View();
+        }
+
+        private static int GetFactorial(int factorialNumber)
+        {
+            int i, number, fact;
+            Console.WriteLine("Enter the Number");
+            fact = factorialNumber;
+            for (i = factorialNumber - 1; i >= 1; i--)
+            {
+                fact = fact * i;
+            }
+            return fact;
+            Console.WriteLine("\nFactorial of Given Number is: " + fact);
+            Console.ReadLine();
         }
 
         public ActionResult About()
