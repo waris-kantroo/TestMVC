@@ -35,8 +35,8 @@ namespace TestMVC.Controllers
                 fact = fact * i;
             }
             return fact;
-            Console.WriteLine("\nFactorial of Given Number is: " + fact);
-            Console.ReadLine();
+           // Console.WriteLine("\nFactorial of Given Number is: " + fact);
+           // Console.ReadLine();
         }
 
         public ActionResult About()
